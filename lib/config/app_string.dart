@@ -1,0 +1,34 @@
+class AppString {
+  static const appName = '5min flutter';
+  static const hlw = 'Hello, welcome Back';
+  static const loginTo = 'Log In To Continue';
+  static const userName = 'Úsername';
+  static const passWord = 'password';
+  static const forgotPass = 'Forgot Password';
+  static const logIn = 'Log In';
+  static const orSignIn = 'Or Sign in With';
+  static const signInwithGoogle = 'Sign In With Google';
+  static const signInwithFB = 'Sign In With Facebook';
+  static const noAccount = "Don't have an account ?";
+  static const signUP = 'Sign up';
+  static const home = 'Home';
+  static const favorite = 'Favorite';
+  static const add = 'Add';
+  static const messages = 'Messages';
+  static const user = 'User';
+  static const followers = 'Followers';
+  static const post = 'Add Post';
+  static const following = 'Following';
+  static const profile = 'Profile';
+  static const editProfile = 'Edit Profile';
+  static const firstName = 'Fist Name';
+  static const lastName = 'Last Name';
+  static const phoneNum = 'Phone Number';
+  static const location = 'Location';
+  static const birth = 'Birth Date';
+  static const male = 'Male';
+  static const female = 'Female';
+  static const others = 'Others';
+  static const gender = 'Gender';
+  static const nearby = 'NearBy';
+}
