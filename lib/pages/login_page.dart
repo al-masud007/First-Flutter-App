@@ -29,7 +29,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   const Text(
-                    AppString.loginTo,
+                    // AppString.loginTo,
+                    'Login here',
                     style: TextStyle(
                       color: Colors.white,
                     ),
