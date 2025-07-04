@@ -6,7 +6,7 @@ import 'package:first_app/pages/nearby_page.dart';
 
 class AppRoutes {
   static final pages = {
-    login: (context) => const LoginPage(),
+    login: (context) => LoginPage(),
     home: (context) => HomePage(),
     main: (context) => const MainPage(),
     editprofile: (context) => EditProfilePage(),

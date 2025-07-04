@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
     mockUserFromServer();
     return Scaffold(
       appBar: Toolbar(
-        title: '5min flutter',
+        title: 'Hello, Welcome Back',
         actions: [
           IconButton(
               onPressed: () {

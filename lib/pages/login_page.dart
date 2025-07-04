@@ -1,11 +1,22 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:first_app/config/app_icons.dart';
 import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/config/app_string.dart';
-
+import 'package:first_app/model/user.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
+const baseurl = 'https://dummyjson.com/user/login';
+
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final loginRoute = baseurl;
+  // final usernamecontroller = TextEditingController();
+  // final passwordcontroller = TextEditingController();
+  String username = '';
+  String password = '';
+  LoginPage({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,13 +41,17 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 24),
                   const Text(
                     // AppString.loginTo,
-                    'Login here',
+                    'Login to continue',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
                   const Spacer(),
                   TextField(
+                    onChanged: (value) {
+                      print('username: $value');
+                      username = value;
+                    },
                     decoration: InputDecoration(
                       hintText: AppString.userName,
                       border: const OutlineInputBorder(
@@ -52,6 +67,10 @@ class LoginPage extends StatelessWidget {
                     height: 18,
                   ),
                   TextField(
+                    onChanged: (value) {
+                      print('password: $value');
+                      password = value;
+                    },
                     decoration: InputDecoration(
                       hintText: AppString.passWord,
                       border: const OutlineInputBorder(
@@ -82,7 +101,8 @@ class LoginPage extends StatelessWidget {
                     height: 48,
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        await doLogin();
                         /* Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
@@ -200,5 +220,30 @@ class LoginPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<User> doLogin() async {
+    final body = {
+      'username': username,
+      'password': password,
+    };
+    print(username);
+    print(password);
+    final response = await http.post(
+      Uri.parse(loginRoute),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(body),
+    );
+    print(response);
+    if (response.statusCode == 200) {
+      print(response.body);
+      final json = jsonDecode(response.body);
+      final user = User.fromJson(json);
+      return user;
+    } else {
+      print(response.body);
+      print('you have an error');
+      throw Exception('error');
+    }
   }
 }
