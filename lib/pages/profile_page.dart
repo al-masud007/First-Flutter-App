@@ -2,6 +2,7 @@ import 'package:first_app/cmponents/tool_bar.dart';
 import 'package:first_app/cmponents/user_avatar.dart';
 import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/config/app_string.dart';
+import 'package:first_app/model/user.dart';
 
 import 'package:first_app/styles/app_text.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,8 @@ import 'package:flutter/material.dart';
 enum ProfileMenu { edit, logout }
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  final User user;
+  const ProfilePage({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,7 @@ class ProfilePage extends StatelessWidget {
           )
         ],
       ),
-      body: const Column(
+      body: Column(
         children: [
           UserAvatar(
             size: 90,
@@ -50,7 +52,7 @@ class ProfilePage extends StatelessWidget {
             height: 20,
           ),
           Text(
-            'Mahdi Mirzadeh',
+            '${user.firstName} ${user.lastName}',
             style: AppText.header2,
           ),
           SizedBox(

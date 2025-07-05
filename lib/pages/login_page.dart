@@ -5,6 +5,7 @@ import 'package:first_app/config/app_icons.dart';
 import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/config/app_string.dart';
 import 'package:first_app/model/user.dart';
+import 'package:first_app/pages/main_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -102,7 +103,7 @@ class LoginPage extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () async {
-                        await doLogin();
+                        final user = await doLogin();
                         /* Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
@@ -110,8 +111,14 @@ class LoginPage extends StatelessWidget {
                             },
                           ),
                         );*/
-                        Navigator.of(context)
-                            .pushReplacementNamed(AppRoutes.main);
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            pageBuilder:
+                                (context, animation, secondaryAnimation) {
+                              return MainPage(user: user);
+                            },
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,
