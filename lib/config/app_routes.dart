@@ -10,7 +10,7 @@ class AppRoutes {
   static final pages = {
     login: (context) => LoginPage(),
     home: (context) => HomePage(),
-    main: (context) => MainPage(user: User()),
+    main: (context) => MainPage(),
     editprofile: (context) => const EditProfilePage(),
     nearby: (context) => const NearByPage(),
   };

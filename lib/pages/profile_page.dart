@@ -1,3 +1,4 @@
+import 'package:first_app/User_Provider.dart';
 import 'package:first_app/cmponents/tool_bar.dart';
 import 'package:first_app/cmponents/user_avatar.dart';
 import 'package:first_app/config/app_routes.dart';
@@ -10,11 +11,13 @@ import 'package:flutter/material.dart';
 enum ProfileMenu { edit, logout }
 
 class ProfilePage extends StatelessWidget {
-  final User user;
-  const ProfilePage({super.key, required this.user});
+  const ProfilePage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final user = UserProvider.of(context)?.user;
     return Scaffold(
       appBar: Toolbar(
         title: AppString.profile,
@@ -34,10 +37,11 @@ class ProfilePage extends StatelessWidget {
             itemBuilder: (context) {
               return [
                 const PopupMenuItem(
-                  child: Text('Edit'),
                   value: ProfileMenu.edit,
+                  child: Text('Edit'),
                 ),
-                PopupMenuItem(child: Text('Log Out'), value: ProfileMenu.logout)
+                const PopupMenuItem(
+                    value: ProfileMenu.logout, child: Text('Log Out'))
               ];
             },
           )
@@ -45,27 +49,27 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          UserAvatar(
+          const UserAvatar(
             size: 90,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
-            '${user.firstName} ${user.lastName}',
+            ' ${user?.id} ${user?.firstName} ${user?.lastName}',
             style: AppText.header2,
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
-          Text(
+          const Text(
             'Madagascar',
             style: AppText.subtitle3,
           ),
-          SizedBox(
+          const SizedBox(
             height: 24,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Column(

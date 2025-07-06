@@ -1,3 +1,4 @@
+import 'package:first_app/User_Provider.dart';
 import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/pages/edit_profile_page.dart';
 import 'package:first_app/pages/home_page.dart';
@@ -18,13 +19,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            fontFamily: 'Urbanist',
-            scaffoldBackgroundColor: AppColors.background,
-            brightness: Brightness.dark),
-        initialRoute: AppRoutes.login,
-        routes: AppRoutes.pages);
+    return UserProvider(
+      userService: UserService(),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+              fontFamily: 'Urbanist',
+              scaffoldBackgroundColor: AppColors.background,
+              brightness: Brightness.dark),
+          initialRoute: AppRoutes.login,
+          routes: AppRoutes.pages),
+    );
   }
 }

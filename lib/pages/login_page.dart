@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:first_app/User_Provider.dart';
 import 'package:first_app/config/app_icons.dart';
 import 'package:first_app/config/app_routes.dart';
 import 'package:first_app/config/app_string.dart';
@@ -104,6 +105,7 @@ class LoginPage extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () async {
                         final user = await doLogin();
+                        UserProvider.of(context)?.updateUser(user);
                         /* Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
@@ -111,14 +113,8 @@ class LoginPage extends StatelessWidget {
                             },
                           ),
                         );*/
-                        Navigator.of(context).push(
-                          PageRouteBuilder(
-                            pageBuilder:
-                                (context, animation, secondaryAnimation) {
-                              return MainPage(user: user);
-                            },
-                          ),
-                        );
+                        Navigator.of(context)
+                            .pushReplacementNamed(AppRoutes.main);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.amber,

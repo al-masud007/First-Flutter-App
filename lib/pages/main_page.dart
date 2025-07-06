@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MainPage extends StatefulWidget {
-  final User user;
-  const MainPage({super.key, required this.user});
+  const MainPage({
+    super.key,
+  });
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -22,7 +23,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: pages()[CurrentIndex.index],
+      body: pages[CurrentIndex.index],
       bottomNavigationBar: MybottomNavigation(
         CurrentIndex: CurrentIndex,
         onTap: (Menues value) {
@@ -34,21 +35,19 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  pages() => [
-        HomePage(),
-        Center(
-          child: Text(AppString.favorite),
-        ),
-        Center(
-          child: Text(AppString.post),
-        ),
-        Center(
-          child: Text(AppString.messages),
-        ),
-        ProfilePage(
-          user: widget.user,
-        )
-      ];
+  final pages = [
+    HomePage(),
+    Center(
+      child: Text(AppString.favorite),
+    ),
+    Center(
+      child: Text(AppString.post),
+    ),
+    Center(
+      child: Text(AppString.messages),
+    ),
+    ProfilePage()
+  ];
 }
 
 enum Menues { home, favorite, add, message, profile }
