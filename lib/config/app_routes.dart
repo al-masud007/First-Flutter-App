@@ -1,4 +1,4 @@
-import 'package:first_app/model/user.dart';
+import 'package:first_app/data/model/user.dart';
 import 'package:first_app/pages/edit_profile_page.dart';
 import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/pages/login_page.dart';
@@ -11,8 +11,8 @@ import 'package:provider/provider.dart';
 class AppRoutes {
   static final pages = {
     login: (context) => ChangeNotifierProvider(
-        create: (context) => LoginProvider(), child: LoginPage()),
-    home: (context) => HomePage(),
+        create: (context) => LoginProvider(), child: const LoginPage()),
+    home: (context) => const HomePage(),
     main: (context) => const MainPage(),
     editprofile: (context) => const EditProfilePage(),
     nearby: (context) => const NearByPage(),

@@ -1,7 +1,7 @@
 import 'package:first_app/cmponents/bottomnavigation_item.dart';
 import 'package:first_app/config/app_icons.dart';
 import 'package:first_app/config/app_string.dart';
-import 'package:first_app/model/user.dart';
+import 'package:first_app/data/model/user.dart';
 import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/pages/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -36,17 +36,17 @@ class _MainPageState extends State<MainPage> {
   }
 
   final pages = [
-    HomePage(),
-    Center(
+    const HomePage(),
+    const Center(
       child: Text(AppString.favorite),
     ),
-    Center(
+    const Center(
       child: Text(AppString.post),
     ),
-    Center(
+    const Center(
       child: Text(AppString.messages),
     ),
-    ProfilePage()
+    const ProfilePage()
   ];
 }
 
@@ -63,14 +63,14 @@ class MybottomNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 87,
-      margin: EdgeInsets.all(24),
+      margin: const EdgeInsets.all(24),
       child: Stack(
         children: [
           Positioned(
               left: 0,
               right: 0,
               top: 17,
-              child: Container(
+              child: SizedBox(
                   height: 70,
                   child: Container(
                     decoration: const BoxDecoration(
@@ -92,7 +92,7 @@ class MybottomNavigation extends StatelessWidget {
                                 icon: AppIcon.icFavorite,
                                 current: CurrentIndex,
                                 name: Menues.favorite)),
-                        Spacer(),
+                        const Spacer(),
                         Expanded(
                             child: BottomnavigationItem(
                                 onPressed: () => onTap(Menues.message),

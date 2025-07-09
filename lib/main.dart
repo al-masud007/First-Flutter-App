@@ -4,16 +4,24 @@ import 'package:first_app/pages/home_page.dart';
 import 'package:first_app/pages/login_page.dart';
 import 'package:first_app/pages/main_page.dart';
 import 'package:first_app/provider/app_repo.dart';
+import 'package:first_app/provider/post_provider.dart';
 import 'package:first_app/styles/app_colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(
-    ChangeNotifierProvider<AppRepo>(
-        create: (context) => AppRepo(), child: const MyApp()),
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider<AppRepo>(
+        create: (context) => AppRepo(),
+      ),
+      ChangeNotifierProvider<PostProvider>(
+        create: (context) => PostProvider(),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
